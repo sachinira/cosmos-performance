@@ -47,6 +47,66 @@ declare -A test_scenario1=(
     [host]=$HOST
 )
 
+declare -A test_scenario2=(
+    [name]="create Document"
+    [description]="Create one document with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="POST"
+    [path]="/create/document"
+    [port]=$PORT
+    [host]=$HOST
+)
+
+declare -A test_scenario3=(
+    [name]="create Stored Procedure"
+    [description]="Create one stored procedure with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="POST"
+    [path]="/create/storedprocedure"
+    [port]=$PORT
+    [host]=$HOST
+)
+
+declare -A test_scenario4=(
+    [name]="create User Defined Function"
+    [description]="Create one user defined function with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="POST"
+    [path]="/create/userdefinedfunction"
+    [port]=$PORT
+    [host]=$HOST
+)
+
+declare -A test_scenario5=(
+    [name]="create Trigger"
+    [description]="Create one trigger with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="POST"
+    [path]="/create/trigger"
+    [port]=$PORT
+    [host]=$HOST
+)
+
+declare -A test_scenario6=(
+    [name]="create User"
+    [description]="Create one user with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="POST"
+    [path]="/create/user"
+    [port]=$PORT
+    [host]=$HOST
+)
+
 function execute_test() {
   eval "declare -A element="${1#*=}
 
@@ -58,6 +118,11 @@ function execute_test() {
 #The whole point of a subshell is that it doesn't affect the calling session. In bash a subshell is a child process, other shells differ but even then a variable setting in a subshell does not affect the caller. By definition.
 execute_test "$(declare -p test_scenario0)" 
 execute_test "$(declare -p test_scenario1)" 
+execute_test "$(declare -p test_scenario2)" 
+execute_test "$(declare -p test_scenario3)" 
+execute_test "$(declare -p test_scenario4)" 
+execute_test "$(declare -p test_scenario5)" 
+execute_test "$(declare -p test_scenario6)" 
 
 #gets the directory name of file containing the command.
 #script_dir=$(dirname "$0")

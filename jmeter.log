@@ -1,74 +1,63 @@
-2021-01-04 10:17:03,796 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
-2021-01-04 10:17:03,819 INFO o.a.j.JMeter: Loading user properties from: /home/sachini/Documents/tools/apache-jmeter-5.4/bin/user.properties
-2021-01-04 10:17:03,820 INFO o.a.j.JMeter: Loading system properties from: /home/sachini/Documents/tools/apache-jmeter-5.4/bin/system.properties
-2021-01-04 10:17:03,820 INFO o.a.j.JMeter: Setting JMeter property: host=localhost
-2021-01-04 10:17:03,820 INFO o.a.j.JMeter: Setting JMeter property: port=9090
-2021-01-04 10:17:03,820 INFO o.a.j.JMeter: Setting JMeter property: protocol=http
-2021-01-04 10:17:03,820 INFO o.a.j.JMeter: Setting JMeter property: users=4
-2021-01-04 10:17:03,820 INFO o.a.j.JMeter: Setting JMeter property: path=/create/container
-2021-01-04 10:17:03,821 INFO o.a.j.JMeter: Setting JMeter property: method=POST
-2021-01-04 10:17:03,821 INFO o.a.j.JMeter: Setting JMeter property: rampUpPeriod=5
-2021-01-04 10:17:03,827 INFO o.a.j.JMeter: Copyright (c) 1998-2020 The Apache Software Foundation
-2021-01-04 10:17:03,827 INFO o.a.j.JMeter: Version 5.4
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: java.version=11.0.9.1
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: os.name=Linux
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: os.arch=amd64
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: os.version=5.4.0-58-generic
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: file.encoding=UTF-8
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: java.awt.headless=true
-2021-01-04 10:17:03,828 INFO o.a.j.JMeter: Max memory     =1073741824
-2021-01-04 10:17:03,829 INFO o.a.j.JMeter: Available Processors =4
-2021-01-04 10:17:03,837 INFO o.a.j.JMeter: Default Locale=English (EN)
-2021-01-04 10:17:03,838 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
-2021-01-04 10:17:03,838 INFO o.a.j.JMeter: JMeterHome=/home/sachini/Documents/tools/apache-jmeter-5.4
-2021-01-04 10:17:03,838 INFO o.a.j.JMeter: user.dir  =/home/sachini/Documents/holiday/jemeter/cosmosdb_performance
-2021-01-04 10:17:03,838 INFO o.a.j.JMeter: PWD       =/home/sachini/Documents/holiday/jemeter/cosmosdb_performance
-2021-01-04 10:17:03,838 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: sachinira FullName: sachinira
-2021-01-04 10:17:03,844 INFO o.a.j.s.FileServer: Default base='/home/sachini/Documents/holiday/jemeter/cosmosdb_performance'
-2021-01-04 10:17:03,845 INFO o.a.j.s.FileServer: Set new base='/home/sachini/Documents/holiday/jemeter/cosmosdb_performance/.'
-2021-01-04 10:17:04,024 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
-2021-01-04 10:17:04,046 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
-2021-01-04 10:17:04,050 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
-2021-01-04 10:17:04,055 INFO o.a.j.s.SaveService: Loading file: ./CosmosDBPerformanceTests.jmx
-2021-01-04 10:17:04,124 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-01-04 10:17:04,125 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-01-04 10:17:04,125 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-01-04 10:17:04,125 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2021-01-04 10:17:04,125 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
-2021-01-04 10:17:04,125 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
-2021-01-04 10:17:04,162 INFO o.a.j.JMeter: Creating summariser <summary>
-2021-01-04 10:17:04,169 INFO o.a.j.e.StandardJMeterEngine: Running the test!
-2021-01-04 10:17:04,173 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2021-01-04 10:17:04,173 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2021-01-04 10:17:04,197 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
-2021-01-04 10:17:04,197 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
-2021-01-04 10:17:04,518 INFO o.a.j.JMeter: Running test (1609735624518)
-2021-01-04 10:17:04,541 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Users1
-2021-01-04 10:17:04,542 INFO o.a.j.e.StandardJMeterEngine: Starting 4 threads for group Users1.
-2021-01-04 10:17:04,542 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2021-01-04 10:17:04,543 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=4 ramp-up=5 delayedStart=false
-2021-01-04 10:17:04,551 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2021-01-04 10:17:04,551 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
-2021-01-04 10:17:04,552 INFO o.a.j.t.JMeterThread: Thread started: Users1 1-1
-2021-01-04 10:17:04,568 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = sachinira
-2021-01-04 10:17:04,574 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
-2021-01-04 10:17:04,576 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
-2021-01-04 10:17:04,576 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
-2021-01-04 10:17:04,576 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
-2021-01-04 10:17:04,577 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
-2021-01-04 10:17:05,798 INFO o.a.j.t.JMeterThread: Thread started: Users1 1-2
-2021-01-04 10:17:05,974 INFO o.a.j.r.Summariser: summary +      1 in 00:00:01 =    0.7/s Avg:  1300 Min:  1300 Max:  1300 Err:     0 (0.00%) Active: 2 Started: 2 Finished: 0
-2021-01-04 10:17:05,975 INFO o.a.j.t.JMeterThread: Thread is done: Users1 1-1
-2021-01-04 10:17:05,976 INFO o.a.j.t.JMeterThread: Thread finished: Users1 1-1
-2021-01-04 10:17:07,049 INFO o.a.j.t.JMeterThread: Thread started: Users1 1-3
-2021-01-04 10:17:07,167 INFO o.a.j.t.JMeterThread: Thread is done: Users1 1-2
-2021-01-04 10:17:07,168 INFO o.a.j.t.JMeterThread: Thread finished: Users1 1-2
-2021-01-04 10:17:08,079 INFO o.a.j.t.JMeterThread: Thread is done: Users1 1-3
-2021-01-04 10:17:08,079 INFO o.a.j.t.JMeterThread: Thread finished: Users1 1-3
-2021-01-04 10:17:08,295 INFO o.a.j.t.JMeterThread: Thread started: Users1 1-4
-2021-01-04 10:17:09,428 INFO o.a.j.t.JMeterThread: Thread is done: Users1 1-4
-2021-01-04 10:17:09,429 INFO o.a.j.t.JMeterThread: Thread finished: Users1 1-4
-2021-01-04 10:17:09,430 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
-2021-01-04 10:17:09,443 INFO o.a.j.r.Summariser: summary +      3 in 00:00:03 =    0.9/s Avg:  1170 Min:  1023 Max:  1359 Err:     0 (0.00%) Active: 0 Started: 4 Finished: 4
-2021-01-04 10:17:09,444 INFO o.a.j.r.Summariser: summary =      4 in 00:00:05 =    0.8/s Avg:  1202 Min:  1023 Max:  1359 Err:     0 (0.00%)
+2021-01-04 16:32:43,432 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2021-01-04 16:32:43,457 INFO o.a.j.JMeter: Loading user properties from: /home/sachini/Documents/tools/apache-jmeter-5.4/bin/user.properties
+2021-01-04 16:32:43,457 INFO o.a.j.JMeter: Loading system properties from: /home/sachini/Documents/tools/apache-jmeter-5.4/bin/system.properties
+2021-01-04 16:32:43,458 INFO o.a.j.JMeter: Setting JMeter property: host=localhost
+2021-01-04 16:32:43,458 INFO o.a.j.JMeter: Setting JMeter property: port=9090
+2021-01-04 16:32:43,458 INFO o.a.j.JMeter: Setting JMeter property: protocol=http
+2021-01-04 16:32:43,458 INFO o.a.j.JMeter: Setting JMeter property: users=1
+2021-01-04 16:32:43,458 INFO o.a.j.JMeter: Setting JMeter property: path=/create/user
+2021-01-04 16:32:43,458 INFO o.a.j.JMeter: Setting JMeter property: method=POST
+2021-01-04 16:32:43,458 INFO o.a.j.JMeter: Setting JMeter property: rampUpPeriod=5
+2021-01-04 16:32:43,466 INFO o.a.j.JMeter: Copyright (c) 1998-2020 The Apache Software Foundation
+2021-01-04 16:32:43,466 INFO o.a.j.JMeter: Version 5.4
+2021-01-04 16:32:43,466 INFO o.a.j.JMeter: java.version=11.0.9.1
+2021-01-04 16:32:43,466 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2021-01-04 16:32:43,467 INFO o.a.j.JMeter: os.name=Linux
+2021-01-04 16:32:43,467 INFO o.a.j.JMeter: os.arch=amd64
+2021-01-04 16:32:43,467 INFO o.a.j.JMeter: os.version=5.4.0-58-generic
+2021-01-04 16:32:43,467 INFO o.a.j.JMeter: file.encoding=UTF-8
+2021-01-04 16:32:43,467 INFO o.a.j.JMeter: java.awt.headless=true
+2021-01-04 16:32:43,467 INFO o.a.j.JMeter: Max memory     =1073741824
+2021-01-04 16:32:43,467 INFO o.a.j.JMeter: Available Processors =4
+2021-01-04 16:32:43,476 INFO o.a.j.JMeter: Default Locale=English (EN)
+2021-01-04 16:32:43,477 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2021-01-04 16:32:43,477 INFO o.a.j.JMeter: JMeterHome=/home/sachini/Documents/tools/apache-jmeter-5.4
+2021-01-04 16:32:43,477 INFO o.a.j.JMeter: user.dir  =/home/sachini/Documents/holiday/jemeter/cosmosdb_performance
+2021-01-04 16:32:43,477 INFO o.a.j.JMeter: PWD       =/home/sachini/Documents/holiday/jemeter/cosmosdb_performance
+2021-01-04 16:32:43,478 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: sachinira FullName: sachinira
+2021-01-04 16:32:43,483 INFO o.a.j.s.FileServer: Default base='/home/sachini/Documents/holiday/jemeter/cosmosdb_performance'
+2021-01-04 16:32:43,486 INFO o.a.j.s.FileServer: Set new base='/home/sachini/Documents/holiday/jemeter/cosmosdb_performance/.'
+2021-01-04 16:32:43,676 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2021-01-04 16:32:43,725 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2021-01-04 16:32:43,729 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2021-01-04 16:32:43,733 INFO o.a.j.s.SaveService: Loading file: ./CosmosDBPerformanceTests.jmx
+2021-01-04 16:32:43,789 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-01-04 16:32:43,789 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-01-04 16:32:43,789 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-01-04 16:32:43,789 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-01-04 16:32:43,789 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2021-01-04 16:32:43,790 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2021-01-04 16:32:43,821 INFO o.a.j.JMeter: Creating summariser <summary>
+2021-01-04 16:32:43,829 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2021-01-04 16:32:43,834 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2021-01-04 16:32:43,835 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2021-01-04 16:32:43,849 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2021-01-04 16:32:43,850 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2021-01-04 16:32:44,181 INFO o.a.j.JMeter: Running test (1609758164181)
+2021-01-04 16:32:44,208 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Users1
+2021-01-04 16:32:44,208 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Users1.
+2021-01-04 16:32:44,209 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2021-01-04 16:32:44,209 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=5 delayedStart=false
+2021-01-04 16:32:44,216 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2021-01-04 16:32:44,216 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2021-01-04 16:32:44,220 INFO o.a.j.t.JMeterThread: Thread started: Users1 1-1
+2021-01-04 16:32:44,240 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = sachinira
+2021-01-04 16:32:44,246 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2021-01-04 16:32:44,248 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2021-01-04 16:32:44,248 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2021-01-04 16:32:44,249 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2021-01-04 16:32:44,249 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2021-01-04 16:32:44,877 INFO o.a.j.t.JMeterThread: Thread is done: Users1 1-1
+2021-01-04 16:32:44,877 INFO o.a.j.t.JMeterThread: Thread finished: Users1 1-1
+2021-01-04 16:32:44,880 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2021-01-04 16:32:44,901 INFO o.a.j.r.Summariser: summary =      1 in 00:00:01 =    1.4/s Avg:   516 Min:   516 Max:   516 Err:     0 (0.00%)
