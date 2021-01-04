@@ -17,7 +17,7 @@
 # under the License.
 #
 # ----------------------------------------------------------------------------
-# Ballerina Performance Tests
+# Run Ballerina Performance Tests
 # ----------------------------------------------------------------------------
 
 . ./performance_test_config.sh
