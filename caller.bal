@@ -219,7 +219,7 @@ service /create on new http:Listener(9090) {
     }
 }
 
-service /get on new http:Listener(9091) {
+service /list on new http:Listener(9091) {
     resource function get database(http:Caller caller, http:Request clientRequest) {
         var response = azureCosmosClient->getDatabase(database.id);
 

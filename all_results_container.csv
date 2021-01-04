@@ -1,7 +1,0 @@
-1609758101433,2663,CosmosDB Performance Test,200,OK,Users1 1-1,text,true,,447,217,1,1,http://localhost:9090/create/database,2660,0,31
-1609758113451,1238,CosmosDB Performance Test,200,OK,Users1 1-1,text,true,,686,218,1,1,http://localhost:9090/create/container,1234,0,33
-1609758124171,546,CosmosDB Performance Test,200,OK,Users1 1-1,text,true,,918,217,1,1,http://localhost:9090/create/document,539,0,32
-1609758134053,484,CosmosDB Performance Test,200,OK,Users1 1-1,text,true,,577,224,1,1,http://localhost:9090/create/storedprocedure,477,0,34
-1609758144394,511,CosmosDB Performance Test,200,OK,Users1 1-1,text,true,,675,228,1,1,http://localhost:9090/create/userdefinedfunction,498,0,30
-1609758154386,527,CosmosDB Performance Test,200,OK,Users1 1-1,text,true,,724,216,1,1,http://localhost:9090/create/trigger,520,0,31
-1609758164334,516,CosmosDB Performance Test,200,OK,Users1 1-1,text,true,,411,213,1,1,http://localhost:9090/create/user,509,0,26

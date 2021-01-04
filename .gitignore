@@ -1,2 +1,4 @@
 /ballerina.conf
 /performance_test_config.sh
+*.csv
+*.log

@@ -1,6 +1,6 @@
 #!/bin/bash -e
 # The -e flag enables interpretation of the following backslash-escaped characters in each STRING:
-# Copyright (c) 2018, WSO2 Inc. (http://wso2.org) All Rights Reserved.
+# Copyright (c) 2021, WSO2 Inc. (http://wso2.org) All Rights Reserved.
 #
 # WSO2 Inc. licenses this file to you under the Apache License,
 # Version 2.0 (the "License"); you may not use this file except
@@ -31,7 +31,7 @@ declare -A test_scenario0=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/database"
-    [port]=$PORT
+    [port]=$PORT_CREATE
     [host]=$HOST
 )
 
@@ -43,7 +43,7 @@ declare -A test_scenario1=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/container"
-    [port]=$PORT
+    [port]=$PORT_CREATE
     [host]=$HOST
 )
 
@@ -55,7 +55,7 @@ declare -A test_scenario2=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/document"
-    [port]=$PORT
+    [port]=$PORT_CREATE
     [host]=$HOST
 )
 
@@ -67,7 +67,7 @@ declare -A test_scenario3=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/storedprocedure"
-    [port]=$PORT
+    [port]=$PORT_CREATE
     [host]=$HOST
 )
 
@@ -79,7 +79,7 @@ declare -A test_scenario4=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/userdefinedfunction"
-    [port]=$PORT
+    [port]=$PORT_CREATE
     [host]=$HOST
 )
 
@@ -91,7 +91,7 @@ declare -A test_scenario5=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/trigger"
-    [port]=$PORT
+    [port]=$PORT_CREATE
     [host]=$HOST
 )
 
@@ -103,15 +103,84 @@ declare -A test_scenario6=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/user"
-    [port]=$PORT
+    [port]=$PORT_CREATE_CREATE
+    [host]=$HOST
+)
+##
+declare -A test_get_scenario0=(
+    [name]="Get Database"
+    [description]="Get database with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/database"
+    [port]=$PORT_GET
     [host]=$HOST
 )
 
+declare -A test_get_scenario1=(
+    [name]="Get Container"
+    [description]="Get container with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/container"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_get_scenario2=(
+    [name]="Get Document"
+    [description]="Get document with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/document"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_get_scenario3=(
+    [name]="Get Permission"
+    [description]="Get trigger with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/permission"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_get_scenario4=(
+    [name]="Get User"
+    [description]="Get user with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/user"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+
 function execute_test() {
-  eval "declare -A element="${1#*=}
+    eval "declare -A element="${1#*=}
 
 	echo ${element[name]}
-	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE
+	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE_CREATE
+	sleep $THREAD_SLEEP_TIME
+}
+
+function execute_get_test() {
+    eval "declare -A element="${1#*=}
+
+	echo ${element[name]}
+	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE_GET
 	sleep $THREAD_SLEEP_TIME
 }
 
@@ -123,6 +192,12 @@ execute_test "$(declare -p test_scenario3)"
 execute_test "$(declare -p test_scenario4)" 
 execute_test "$(declare -p test_scenario5)" 
 execute_test "$(declare -p test_scenario6)" 
+
+execute_get_test "$(declare -p test_get_scenario0)" 
+execute_get_test "$(declare -p test_get_scenario1)" 
+execute_get_test "$(declare -p test_get_scenario2)" 
+execute_get_test "$(declare -p test_get_scenario3)" 
+execute_get_test "$(declare -p test_get_scenario4)" 
 
 #gets the directory name of file containing the command.
 #script_dir=$(dirname "$0")
