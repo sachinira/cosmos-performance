@@ -103,7 +103,7 @@ declare -A test_scenario6=(
     [protocol]="http"
     [method]="POST"
     [path]="/create/user"
-    [port]=$PORT_CREATE_CREATE
+    [port]=$PORT_CREATE
     [host]=$HOST
 )
 
@@ -169,7 +169,7 @@ declare -A test_get_scenario4=(
 )
 
 ##
-declare -A test_get_scenario0=(
+declare -A test_list_scenario0=(
     [name]="List Databases"
     [description]="Get all databases in cosmos account"
     [users]=$NUM_USERS

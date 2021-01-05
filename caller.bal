@@ -18,6 +18,9 @@ cosmosdb:Container container = {};
 cosmosdb:Document document = {};
 cosmosdb:User user = {};
 cosmosdb:Permission permission = {};
+cosmosdb:StoredProcedure storedprocedure = {};
+cosmosdb:UserDefinedFunction userDefinedFunction = {};
+cosmosdb:Trigger trigger = {};
 
 service /create on new http:Listener(9090) {
     
@@ -27,8 +30,8 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createDatabase(createDatabaseId);
         if (response is cosmosdb:Database){
-            var result = caller->respond(<@untainted>response);
             database = <@untainted>response;
+            var result = caller->respond(<@untainted>response);
         } else {
             log:printError(response.message());
             http:Response res = new;
@@ -48,8 +51,8 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createContainer(database.id, createContainerId, pk);
         if (response is cosmosdb:Container){
-            var result = caller->respond(<@untainted>response);
             container = <@untainted>response;
+            var result = caller->respond(<@untainted>response);
         } else {
             log:printError(response.message());
             http:Response res = new;
@@ -102,8 +105,8 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createDocument(database.id, container.id, createDoc);
         if (response is cosmosdb:Document){
-            var result = caller->respond(<@untainted>response.toString());
             document = <@untainted>response;
+            var result = caller->respond(<@untainted>response.toString());
         } else {
             log:printError(response.message());
             http:Response res = new;
@@ -123,6 +126,7 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createStoredProcedure(database.id, container.id, storedProcedure);
         if (response is cosmosdb:StoredProcedure){
+            storedprocedure = <@untainted>response;
             var result = caller->respond(<@untainted>response);
         } else {
             log:printError(response.message());
@@ -143,6 +147,7 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createUserDefinedFunction(database.id, container.id, createUdf);
         if (response is cosmosdb:UserDefinedFunction){
+            userDefinedFunction = <@untainted>response;
             var result = caller->respond(<@untainted>response);
         } else {
             log:printError(response.message());
@@ -167,6 +172,7 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createTrigger(database.id, container.id, createTrigger);
         if (response is cosmosdb:Trigger){
+            trigger = <@untainted>response;
             var result = caller->respond(<@untainted>response);
         } else {
             log:printError(response.message());
@@ -183,9 +189,8 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createUser(database.id, userId);
         if (response is cosmosdb:User){
-            var result = caller->respond(<@untainted>response);
             user = <@untainted>response;
-
+            var result = caller->respond(<@untainted>response);
         } else {
             log:printError(response.message());
             http:Response res = new;
@@ -208,8 +213,8 @@ service /create on new http:Listener(9090) {
 
         var response = azureCosmosClient->createPermission(database.id, user.id, createPermission); 
         if (response is cosmosdb:Permission){
-            var result = caller->respond(<@untainted>response);
             permission = <@untainted>response;
+            var result = caller->respond(<@untainted>response);
         } else {
             log:printError(response.message());
             http:Response res = new;
@@ -435,6 +440,120 @@ service /list on new http:Listener(9091) {
             var result = caller->respond((<@untainted>offer?.value));
         } else {
             log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }  
+}
+
+service /deletes on new http:Listener(9092) {
+    resource function delete database(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deleteDatabase(database.id);
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    } 
+
+    resource function delete container(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deleteContainer(database.id,container.id);
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    } 
+
+    resource function delete document(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deleteDocument(database.id,container.id,document.id, [1234]); //check this
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function delete storedprocedure(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deleteStoredProcedure(database.id,container.id, storedprocedure.id); 
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function delete userdefinedfunction(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deleteUserDefinedFunction(database.id,container.id, userDefinedFunction.id);
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function delete trigger(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deleteTrigger(database.id,container.id, trigger.id);
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function delete user(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deleteUser(database.id, user.id);
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+    
+    resource function delete permission(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->deletePermission(database.id, permission.id, user.id);
+
+        if (response == true){
+            var result = caller->respond(<@untainted>response.toString());
+        } else {
+            log:printError(response.toString());
             http:Response res = new;
             res.statusCode = 500;
             res.setPayload((<@untainted error>response).message());
