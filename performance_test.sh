@@ -289,6 +289,115 @@ declare -A test_list_scenario9=(
     [host]=$HOST
 )
 
+##
+declare -A test_delete_scenario0=(
+    [name]="Delete Database"
+    [description]="Delete one database in cosmos account"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/database"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario1=(
+    [name]="Delete Container"
+    [description]="Delete one container inside a database"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/container"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario2=(
+    [name]="Delete Document"
+    [description]="Delete a document inside a given container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/document"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario3=(
+    [name]="Delete a Stored Procedure"
+    [description]="Delete a stored procedures in a container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/storedprocedure"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario4=(
+    [name]="Delete Defined Function"
+    [description]="Delete a User Defined Function in a container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/userdefinedfunction"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario5=(
+    [name]="Delete Trigger"
+    [description]="Delete a trigger with in a container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/trigger"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario6=(
+    [name]="Delete User"
+    [description]="Delete a user in cosmsos db account"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/user"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario7=(
+    [name]="Delete Permissions"
+    [description]="Delete a permission for a given user"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/permission"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
+declare -A test_delete_scenario8=(
+    [name]="Delete Offers"
+    [description]="Delete a offer in cosmsos db account"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="DELETE"
+    [path]="/deletes/offer"
+    [port]=$PORT_DELETE
+    [host]=$HOST
+)
+
 function execute_create_test() {
     eval "declare -A element="${1#*=}
 	echo ${element[name]}
@@ -307,6 +416,13 @@ function execute_list_test() {
     eval "declare -A element="${1#*=}
 	echo ${element[name]}
 	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE_LIST
+	sleep $THREAD_SLEEP_TIME
+}
+
+function execute_delete_test() {
+    eval "declare -A element="${1#*=}
+	echo ${element[name]}
+	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE_DELETE
 	sleep $THREAD_SLEEP_TIME
 }
 
@@ -336,6 +452,15 @@ execute_list_test "$(declare -p test_list_scenario7)"
 execute_list_test "$(declare -p test_list_scenario8)" 
 execute_list_test "$(declare -p test_list_scenario9)" 
 
+execute_delete_test "$(declare -p test_delete_scenario0)" 
+execute_delete_test "$(declare -p test_delete_scenario1)" 
+execute_delete_test "$(declare -p test_delete_scenario2)" 
+execute_delete_test "$(declare -p test_delete_scenario3)" 
+execute_delete_test "$(declare -p test_delete_scenario4)" 
+execute_delete_test "$(declare -p test_delete_scenario5)" 
+execute_delete_test "$(declare -p test_delete_scenario6)" 
+execute_delete_test "$(declare -p test_delete_scenario7)" 
+execute_delete_test "$(declare -p test_delete_scenario8)" 
 #gets the directory name of file containing the command.
 #script_dir=$(dirname "$0")
 
