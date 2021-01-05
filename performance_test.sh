@@ -106,6 +106,7 @@ declare -A test_scenario6=(
     [port]=$PORT_CREATE_CREATE
     [host]=$HOST
 )
+
 ##
 declare -A test_get_scenario0=(
     [name]="Get Database"
@@ -144,18 +145,6 @@ declare -A test_get_scenario2=(
 )
 
 declare -A test_get_scenario3=(
-    [name]="Get Permission"
-    [description]="Get trigger with a given id"
-    [users]=$NUM_USERS
-    [rampUpPeriod]=$RAMP_UP_TIME
-    [protocol]="http"
-    [method]="GET"
-    [path]="/list/permission"
-    [port]=$PORT_GET
-    [host]=$HOST
-)
-
-declare -A test_get_scenario4=(
     [name]="Get User"
     [description]="Get user with a given id"
     [users]=$NUM_USERS
@@ -167,10 +156,141 @@ declare -A test_get_scenario4=(
     [host]=$HOST
 )
 
+declare -A test_get_scenario4=(
+    [name]="Get Permission"
+    [description]="Get trigger with a given id"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/permission"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+##
+declare -A test_get_scenario0=(
+    [name]="List Databases"
+    [description]="Get all databases in cosmos account"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/databases"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario1=(
+    [name]="List Containers"
+    [description]="Get all containers inside a database"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/containers"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario2=(
+    [name]="List Partition Key Ranges"
+    [description]="Get all partition keyranges a given container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/partitionkeyranges"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario3=(
+    [name]="List Documents"
+    [description]="Get all documentinside a given container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/documents"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario4=(
+    [name]="List Stored Procedures"
+    [description]="Get all stored procedures in a container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/storedprocedures"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario5=(
+    [name]="List User Defined Functions"
+    [description]="Get all User Defined Function in a container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/userdefinedfunctions"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario6=(
+    [name]="List Triggers"
+    [description]="Get all triggers with in a container"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/triggers"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario7=(
+    [name]="List Users"
+    [description]="Get all users in cosmsos db account"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/users"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario8=(
+    [name]="List Permissions"
+    [description]="Get permissions for a given user"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/permissions"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
+
+declare -A test_list_scenario9=(
+    [name]="List Offers"
+    [description]="Get all offers in cosmsos db account"
+    [users]=$NUM_USERS
+    [rampUpPeriod]=$RAMP_UP_TIME
+    [protocol]="http"
+    [method]="GET"
+    [path]="/list/offers"
+    [port]=$PORT_GET
+    [host]=$HOST
+)
 
 function execute_create_test() {
     eval "declare -A element="${1#*=}
-
 	echo ${element[name]}
 	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE_CREATE
 	sleep $THREAD_SLEEP_TIME
@@ -178,9 +298,15 @@ function execute_create_test() {
 
 function execute_get_test() {
     eval "declare -A element="${1#*=}
-
 	echo ${element[name]}
 	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE_GET
+	sleep $THREAD_SLEEP_TIME
+}
+
+function execute_list_test() {
+    eval "declare -A element="${1#*=}
+	echo ${element[name]}
+	sh ${JMETER_HOME}/bin/jmeter -n -t $JMX_FILE -Jhost=${element[host]} -Jport=${element[port]} -Jprotocol=${element[protocol]} -Jusers=${element[users]} -Jpath=${element[path]} -Jmethod=${element[method]} -JrampUpPeriod=${element[rampUpPeriod]} -l $OUTPUT_FILE_LIST
 	sleep $THREAD_SLEEP_TIME
 }
 
@@ -198,6 +324,17 @@ execute_get_test "$(declare -p test_get_scenario1)"
 execute_get_test "$(declare -p test_get_scenario2)" 
 execute_get_test "$(declare -p test_get_scenario3)" 
 execute_get_test "$(declare -p test_get_scenario4)" 
+
+execute_list_test "$(declare -p test_list_scenario0)" 
+execute_list_test "$(declare -p test_list_scenario1)" 
+execute_list_test "$(declare -p test_list_scenario2)" 
+execute_list_test "$(declare -p test_list_scenario3)" 
+execute_list_test "$(declare -p test_list_scenario4)" 
+execute_list_test "$(declare -p test_list_scenario5)" 
+execute_list_test "$(declare -p test_list_scenario6)" 
+execute_list_test "$(declare -p test_list_scenario7)" 
+execute_list_test "$(declare -p test_list_scenario8)" 
+execute_list_test "$(declare -p test_list_scenario9)" 
 
 #gets the directory name of file containing the command.
 #script_dir=$(dirname "$0")

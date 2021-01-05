@@ -321,7 +321,7 @@ service /list on new http:Listener(9091) {
         }
     }
 
-    resource function get partitionkeys(http:Caller caller, http:Request clientRequest) {
+    resource function get partitionkeyranges(http:Caller caller, http:Request clientRequest) {
         var response = azureCosmosClient->listPartitionKeyRanges(database.id, container.id);
 
         if (response is stream<cosmosdb:PartitionKeyRange>){
