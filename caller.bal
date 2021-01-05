@@ -3,6 +3,7 @@ import ballerina/log;
 import ballerinax/cosmosdb;
 import ballerina/config;
 import ballerina/system;
+import ballerina/runtime;
 
 cosmosdb:AzureCosmosConfiguration configuration = {
     baseUrl : getConfigValue("BASE_URL"), 
@@ -281,6 +282,157 @@ service /list on new http:Listener(9091) {
 
         if (response is cosmosdb:Permission){
             var result = caller->respond(<@untainted>response);
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get databases(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listDatabases();
+
+        if (response is stream<cosmosdb:Database>){
+            var databaseResult = response.next();
+            var result = caller->respond(<@untainted>databaseResult?.value);
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get containers(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listContainers(database.id);
+
+        if (response is stream<cosmosdb:Container>){
+            var containerResult = response.next();
+            var result = caller->respond(<@untainted>containerResult?.value);
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get partitionkeys(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listPartitionKeyRanges(database.id, container.id);
+
+        if (response is stream<cosmosdb:PartitionKeyRange>){
+            var partitionKeyrange = response.next();
+            var result = caller->respond(<@untainted>partitionKeyrange?.value);
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get documentlist(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->getDocumentList(database.id, container.id);
+
+        if (response is stream<cosmosdb:Document>){
+            var documentResult = response.next();
+            var result = caller->respond((<@untainted>documentResult?.value).toString());
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get storedprocedures(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listStoredProcedures(database.id, container.id);
+
+        if (response is stream<cosmosdb:StoredProcedure>){
+            var storedProcedure = response.next();
+            var result = caller->respond(<@untainted>storedProcedure?.value);
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get userdefinedfunctions(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listUserDefinedFunctions(database.id, container.id);
+
+        if (response is stream<cosmosdb:UserDefinedFunction>){
+            var userDefinedFunction = response.next();
+            var result = caller->respond(<@untainted>userDefinedFunction?.value);
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get triggers(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listTriggers(database.id, container.id);
+
+        if (response is stream<cosmosdb:Trigger>){
+            var trigger = response.next();
+            var result = caller->respond((<@untainted>trigger?.value));
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get users(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listUsers(database.id);
+
+        if (response is stream<cosmosdb:User>){
+            var user = response.next();
+            var result = caller->respond((<@untainted>user?.value));
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get permissions(http:Caller caller, http:Request clientRequest) {
+        var response = azureCosmosClient->listPermissions(database.id, user.id);
+
+        if (response is stream<cosmosdb:Permission>){
+            var permission = response.next();
+            var result = caller->respond((<@untainted>permission?.value));
+        } else {
+            log:printError(response.message());
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload((<@untainted error>response).message());
+            var result = caller->respond(res);
+        }
+    }
+
+    resource function get offers(http:Caller caller, http:Request clientRequest) {
+        runtime:sleep(3000);
+        var response = azureCosmosClient->listOffers();
+
+        if (response is stream<cosmosdb:Offer>){
+            var offer = response.next();
+            var result = caller->respond((<@untainted>offer?.value));
         } else {
             log:printError(response.message());
             http:Response res = new;

@@ -168,7 +168,7 @@ declare -A test_get_scenario4=(
 )
 
 
-function execute_test() {
+function execute_create_test() {
     eval "declare -A element="${1#*=}
 
 	echo ${element[name]}
@@ -185,13 +185,13 @@ function execute_get_test() {
 }
 
 #The whole point of a subshell is that it doesn't affect the calling session. In bash a subshell is a child process, other shells differ but even then a variable setting in a subshell does not affect the caller. By definition.
-execute_test "$(declare -p test_scenario0)" 
-execute_test "$(declare -p test_scenario1)" 
-execute_test "$(declare -p test_scenario2)" 
-execute_test "$(declare -p test_scenario3)" 
-execute_test "$(declare -p test_scenario4)" 
-execute_test "$(declare -p test_scenario5)" 
-execute_test "$(declare -p test_scenario6)" 
+execute_create_test "$(declare -p test_scenario0)" 
+execute_create_test "$(declare -p test_scenario1)" 
+execute_create_test "$(declare -p test_scenario2)" 
+execute_create_test "$(declare -p test_scenario3)" 
+execute_create_test "$(declare -p test_scenario4)" 
+execute_create_test "$(declare -p test_scenario5)" 
+execute_create_test "$(declare -p test_scenario6)" 
 
 execute_get_test "$(declare -p test_get_scenario0)" 
 execute_get_test "$(declare -p test_get_scenario1)" 
