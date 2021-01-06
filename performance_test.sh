@@ -386,18 +386,6 @@ declare -A test_delete_scenario7=(
     [host]=$HOST
 )
 
-declare -A test_delete_scenario8=(
-    [name]="Delete Offers"
-    [description]="Delete a offer in cosmsos db account"
-    [users]=$NUM_USERS
-    [rampUpPeriod]=$RAMP_UP_TIME
-    [protocol]="http"
-    [method]="DELETE"
-    [path]="/deletes/offer"
-    [port]=$PORT_DELETE
-    [host]=$HOST
-)
-
 function execute_create_test() {
     eval "declare -A element="${1#*=}
 	echo ${element[name]}
@@ -452,15 +440,15 @@ execute_list_test "$(declare -p test_list_scenario7)"
 execute_list_test "$(declare -p test_list_scenario8)" 
 execute_list_test "$(declare -p test_list_scenario9)" 
 
-execute_delete_test "$(declare -p test_delete_scenario0)" 
-execute_delete_test "$(declare -p test_delete_scenario1)" 
-execute_delete_test "$(declare -p test_delete_scenario2)" 
-execute_delete_test "$(declare -p test_delete_scenario3)" 
-execute_delete_test "$(declare -p test_delete_scenario4)" 
-execute_delete_test "$(declare -p test_delete_scenario5)" 
-execute_delete_test "$(declare -p test_delete_scenario6)" 
+
 execute_delete_test "$(declare -p test_delete_scenario7)" 
-execute_delete_test "$(declare -p test_delete_scenario8)" 
+execute_delete_test "$(declare -p test_delete_scenario6)" 
+execute_delete_test "$(declare -p test_delete_scenario5)" 
+execute_delete_test "$(declare -p test_delete_scenario4)" 
+execute_delete_test "$(declare -p test_delete_scenario3)" 
+execute_delete_test "$(declare -p test_delete_scenario2)" 
+execute_delete_test "$(declare -p test_delete_scenario1)" 
+execute_delete_test "$(declare -p test_delete_scenario0)" 
 #gets the directory name of file containing the command.
 #script_dir=$(dirname "$0")
 

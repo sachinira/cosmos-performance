@@ -255,7 +255,7 @@ service /list on new http:Listener(9091) {
     }
 
     resource function get document(http:Caller caller, http:Request clientRequest) {
-        var response = azureCosmosClient->getDocument(database.id, container.id, document.id, [1234]);
+        var response = azureCosmosClient->getDocument(database.id, container.id, document.id, [database.id]);
 
         if (response is cosmosdb:Document){
             var result = caller->respond((<@untainted>response).toString());
@@ -282,6 +282,7 @@ service /list on new http:Listener(9091) {
         }
     }
 
+    #problem
     resource function get permission(http:Caller caller, http:Request clientRequest) {
         var response = azureCosmosClient->getPermission(database.id, user.id, permission.id);  
 
@@ -341,7 +342,7 @@ service /list on new http:Listener(9091) {
         }
     }
 
-    resource function get documentlist(http:Caller caller, http:Request clientRequest) {
+    resource function get documents(http:Caller caller, http:Request clientRequest) {
         var response = azureCosmosClient->getDocumentList(database.id, container.id);
 
         if (response is stream<cosmosdb:Document>){
@@ -478,7 +479,7 @@ service /deletes on new http:Listener(9092) {
     } 
 
     resource function delete document(http:Caller caller, http:Request clientRequest) {
-        var response = azureCosmosClient->deleteDocument(database.id,container.id,document.id, [1234]); //check this
+        var response = azureCosmosClient->deleteDocument(database.id,container.id,document.id, [database.id]);
 
         if (response == true){
             var result = caller->respond(<@untainted>response.toString());
