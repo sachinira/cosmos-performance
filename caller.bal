@@ -35,9 +35,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -56,9 +56,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -110,9 +110,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -131,9 +131,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -152,9 +152,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -177,9 +177,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -194,9 +194,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -218,9 +218,9 @@ service /create on new http:Listener(9090) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 }
@@ -234,9 +234,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -248,9 +248,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -262,9 +262,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -276,9 +276,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -291,9 +291,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -306,9 +306,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -321,9 +321,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -336,9 +336,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -351,9 +351,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -366,9 +366,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -381,9 +381,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -396,9 +396,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -411,9 +411,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -426,9 +426,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }
 
@@ -442,9 +442,9 @@ service /list on new http:Listener(9091) {
         } else {
             log:printError(response.message());
             http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload((<@untainted error>response).message());
-            var result = caller->respond(res);
+            res.statusCode = <int>response.detail()["status"];
+            res.setPayload(<@untainted>response.message());
+            var result = caller->respond(<@untainted>res);
         }
     }  
 }
